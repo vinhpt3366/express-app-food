@@ -1,3 +1,5 @@
+import { NODE_ENV } from "../constant/app.constant.js";
+
 export const responseSuccess = (data = null, message = "Data fetched successfully!", code = 200, pagination = null) => {
   if (typeof code !== "number") code = 200;
   const response = {
@@ -22,7 +24,7 @@ export const responseError = (message = "Internal Server Error!", code = 500, st
     message,
   };
 
-  if (process.env.NODE_ENV === "development" && stack) {
+  if (NODE_ENV === "development" && stack) {
     response.stack = stack;
   }
 
